@@ -1,4 +1,4 @@
-﻿namespace SendAndReceiveSmsCORE.Models
+﻿namespace SmsIntegration.Models
 {
     public class User
     {

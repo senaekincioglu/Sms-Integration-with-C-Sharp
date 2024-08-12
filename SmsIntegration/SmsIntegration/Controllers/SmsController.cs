@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SendAndReceiveSmsCORE.Models;
+using SmsIntegration.Models;
 using Twilio.Types;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SendAndReceiveSmsCORE.Models;
 using SmsIntegration.Models;
+
 
 
 namespace SmsIntegration.Data
