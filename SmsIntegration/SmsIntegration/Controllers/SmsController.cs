@@ -83,7 +83,7 @@ namespace SmsIntegration.Controllers
         }
 
         // GET: /Sms/Verify
-        public IActionResult Verify(string phoneNumber) //Kullanıcının sms ile gelen kodu girip doğrulayacağı kısım ve doğru ise succes e yönlendirecek.
+        public IActionResult Verify(string phoneNumber) //Kullanıcıya gelen sms kodu girip doğrulayacağı kısım ve doğru ise succes e yönlendirecek.
         {
             ViewBag.PhoneNumber = phoneNumber;
             return View();
@@ -117,6 +117,11 @@ namespace SmsIntegration.Controllers
             }
 
             ViewBag.ErrorMessage = "Invalid verification code.";
+            return View();
+        }
+
+        public IActionResult Success() 
+        {
             return View();
         }
 
