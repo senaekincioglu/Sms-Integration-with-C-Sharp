@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SendAndReceiveSmsCORE.Models;
+using SmsIntegration.Models;
 
 
 namespace SmsIntegration.Data
@@ -10,5 +12,8 @@ namespace SmsIntegration.Data
            : base(options)
         {
         }
+
+        public DbSet<User> Users { get; set; }  
+        public DbSet<TwilioSettings> TwilioSettings { get; set; }
     }
 }
