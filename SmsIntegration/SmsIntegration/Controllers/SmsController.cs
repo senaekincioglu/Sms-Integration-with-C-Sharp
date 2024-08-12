@@ -18,7 +18,7 @@ namespace SmsIntegration.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Register()
         {
             return View();
         }
