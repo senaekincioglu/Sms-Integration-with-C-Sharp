@@ -81,7 +81,48 @@ namespace SmsIntegration.Controllers
                 return Content($"An error occurred: {ex.Message}");
             }
         }
+
+        // GET: /Sms/Verify
+        public IActionResult Verify(string phoneNumber) //Kullanıcının sms ile gelen kodu girip doğrulayacağı kısım ve doğru ise succes e yönlendirecek.
+        {
+            ViewBag.PhoneNumber = phoneNumber;
+            return View();
+        }
+
+        // POST: /Sms/Verify
+        [HttpPost]
+        public async Task<IActionResult> Verify(string phoneNumber, string verificationCode)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "User not found.";
+                return View();
+            }
+
+            if (string.IsNullOrEmpty(verificationCode))
+            {
+                ViewBag.ErrorMessage = "Verification code cannot be empty.";
+                return View();
+            }
+
+            if (user.VerificationCode == verificationCode)
+            {
+                user.IsVerified = true;
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Success");
+            }
+
+            ViewBag.ErrorMessage = "Invalid verification code.";
+            return View();
+        }
+
     }
+
+
 }
 
     
