@@ -144,6 +144,11 @@ namespace SmsIntegration.Controllers
             return View();
         }
 
+        public IActionResult VerifiedNumber()
+        {
+            return View();
+        }
+
     }
 
 
