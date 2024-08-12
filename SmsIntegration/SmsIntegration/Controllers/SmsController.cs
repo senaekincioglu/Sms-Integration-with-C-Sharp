@@ -17,17 +17,31 @@ namespace SmsIntegration.Controllers
         {
             _context = context;
         }
-
+        // Telefon numarasını normalize eden yardımcı yöntem
+        private string NormalizePhoneNumber(string phoneNumber)
+        {
+            if (phoneNumber.StartsWith("0"))
+            {
+                phoneNumber = "+90" + phoneNumber.Substring(1);
+            }
+            else if (phoneNumber.StartsWith("5"))
+            {
+                phoneNumber = "+90" + phoneNumber;
+            }
+            return phoneNumber;
+        }
         public IActionResult Register()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Register(User user)
         {
             try
             {
+                // Telefon numarasını normalize et
+                user.PhoneNumber = NormalizePhoneNumber(user.PhoneNumber);
+
                 // Kullanıcı zaten veritabanında varsa
                 var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == user.PhoneNumber);
                 if (existingUser != null)
@@ -42,7 +56,7 @@ namespace SmsIntegration.Controllers
                     else
                     {
                         // Kullanıcı zaten doğrulanmış, yeniden kod göndermeye gerek yok
-                        return RedirectToAction("Success");
+                        return RedirectToAction("VerifiedNumber");
                     }
                 }
                 else
@@ -83,16 +97,20 @@ namespace SmsIntegration.Controllers
         }
 
         // GET: /Sms/Verify
-        public IActionResult Verify(string phoneNumber) //Kullanıcıya gelen sms kodu girip doğrulayacağı kısım ve doğru ise succes e yönlendirecek.
+        public IActionResult Verify(string phoneNumber)
         {
             ViewBag.PhoneNumber = phoneNumber;
             return View();
         }
 
+
         // POST: /Sms/Verify
         [HttpPost]
         public async Task<IActionResult> Verify(string phoneNumber, string verificationCode)
         {
+            // Telefon numarasını normalize et
+            phoneNumber = NormalizePhoneNumber(phoneNumber);
+
             var user = await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
 
             if (user == null)
@@ -119,6 +137,7 @@ namespace SmsIntegration.Controllers
             ViewBag.ErrorMessage = "Invalid verification code.";
             return View();
         }
+
 
         public IActionResult Success() 
         {
