@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\SmsIntegration\\SmsIntegration\\SmsIntegration.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\3. Kendimi geliştirmek için öğreneceklerim\\Sms-Integration-with-C-Sharp\\SmsIntegration\\SmsIntegration\\SmsIntegration.csproj",
       "projectName": "SmsIntegration",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\SmsIntegration\\SmsIntegration\\SmsIntegration.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\3. Kendimi geliştirmek için öğreneceklerim\\Sms-Integration-with-C-Sharp\\SmsIntegration\\SmsIntegration\\SmsIntegration.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\SmsIntegration\\SmsIntegration\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\ÖGRENECEKLERİM\\3. Kendimi geliştirmek için öğreneceklerim\\Sms-Integration-with-C-Sharp\\SmsIntegration\\SmsIntegration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
