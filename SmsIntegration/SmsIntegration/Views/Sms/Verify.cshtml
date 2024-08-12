@@ -1,0 +1,27 @@
+﻿@model SmsIntegration.Models.User
+
+@{
+    ViewData["Title"] = "Verify";
+    var phoneNumber = ViewBag.PhoneNumber as string;
+}
+
+<h1>Verify</h1>
+
+<form asp-action="Verify" method="post">
+    <div class="form-group">
+        <label for="verificationCode">Verification Code</label>
+        <input type="text" id="verificationCode" name="verificationCode" class="form-control" />
+        <input type="hidden" name="phoneNumber" value="@phoneNumber" />
+        <span asp-validation-for="VerificationCode" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <script>
+        alert('@ViewBag.ErrorMessage');
+        window.location.href = '@Url.Action("Register", "Sms")';
+    </script>
+}
+
